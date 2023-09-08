@@ -1,0 +1,8 @@
+heroku/secrets/pass
+heroku/secrets/dbconfig.php
+local_deployment/secrets/dbconfig.php
+local_deployment/storage/*
+publicx/*
+heroku
+landoo.patch
+d.env

@@ -1,0 +1,21 @@
+body {
+      background: #131417;
+      color: white;
+      margin: 0;
+      display: grid;
+      place-items: center;
+      padding: 2rem;
+}
+
+.credit {
+      color: grey;
+      display: hidden;
+      position: fixed;
+      left: 50%;
+      bottom: 20px;
+      transform: translate(-50%, -50%);
+      margin: 0 auto;
+}
+a {
+      color: #grey;
+}

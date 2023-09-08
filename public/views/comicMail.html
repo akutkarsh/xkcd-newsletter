@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+
+<html lang="en">
+<head>
+  <title>XKCD Comic</title>
+  <style type="text/css">
+    {$css}
+  </style>
+</head>
+<body>
+  <div class='content'>
+    <div class='header'>
+      <div class="header-1">
+        <img src="https://xkcd.com/s/0b7742.png" class="xkcd_logo"
+        alt="xkcd_logo">
+      </div>
+
+      <div class="header-2">
+        <h2>A webcomic of romance, sarcasm, math, and language</h2>
+        <h1>{$xkcd_title}</h1>
+      </div>
+    </div>
+
+    <div class="news-section">
+      <img src="{$xkcd_imgLink}" class="imgc" alt="xkcd_comic">
+      <!-- Add vertical <hr> element here    -->
+
+      <div class="description">
+        <p>{$xkcd_description}></p>
+      </div>
+    </div>
+
+    <div class="footer">
+      <a href="{$unsubscribeLink}">Unsubscribe</a>
+    </div>
+  </div>
+</body>
+</html>

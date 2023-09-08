@@ -1,0 +1,4 @@
+phpVersion: "8.1"
+tabWidth: 4
+braceStyle: "1tbs"
+singleQuote: true

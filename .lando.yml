@@ -1,0 +1,72 @@
+name: xkcd_newsletter
+recipe: lemp
+config:
+  php: '8.1'
+  composer_version: '2.5.1'
+  webroot: public
+  database: .lando/mysql.cnf
+  # php: .lando/php.ini
+  # Keep it empty, to enable xdebug use `lando xdebug <xdebug mode>` instead
+  xdebug: ""
+services:
+  appserver:
+    env_file:
+      - def.env
+    build_as_root:
+      - apt update
+      - apt install cron -y
+    run_as_root:
+      - ln -snf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
+      - echo "Asia/Kolkata" > /etc/timezone
+      - service cron start
+    run:
+      - env | grep LANDO_INFO > /app/d.env
+      - env | grep DB_ID >> /app/d.env
+      - env | grep DB_HOST >> /app/d.env
+      - env | grep DB_PASS >> /app/d.env
+      - env | grep DB_DB >> /app/d.env
+      - env | grep xkcd_site_name >> /app/d.env
+      - crontab /app/cron.txt
+    environment:
+      DB_HOST: database
+      DB_ID: rtcamp
+      DB_PASS: rtcamp
+      DB_DB: xkcd_newsletter
+      xkcd_site_name: xkcd_newsletter.lndo.site
+  database:
+    volumes:
+      mariadb: { }
+    type: compose
+    creds:
+      user: utkarsh
+      password: utkarsh
+      database: xkcd_newsletter
+    services:
+      image: mariadb:latest
+      command: docker-entrypoint.sh mariadbd
+      volumes:
+        - mariadb:/var/lib/mysql
+      environment:
+        MARIADB_ALLOW_EMPTY_ROOT_PASSWORD: 1
+        MARIADB_DATABASE: xkcd_newsletter
+        MYSQL_DATABASE: xkcd_newsletter
+        MARIADB_USER: utkarsh
+        MARIADB_PASSWORD: utkarsh
+  mailhog:
+    type: mailhog
+    portforward: false
+    hogfrom:
+      - appserver
+  phpmyadmin:
+    type: phpmyadmin
+tooling:
+  xdebug:
+    description: Loads Xdebug in the selected mode.
+    cmd:
+      - appserver: /app/.lando/xdebug.sh
+    user: root
+  enable-cron:
+    description: Starts cron job in the appserver container
+    cmd:
+      - appserver: service cron start
+    user: root

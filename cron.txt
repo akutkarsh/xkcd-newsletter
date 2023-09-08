@@ -1,0 +1,1 @@
+*/5 * * * * export $( cat /app/d.env | xargs ) && /usr/local/bin/php /app/cronscript.php

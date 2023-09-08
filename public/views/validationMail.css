@@ -1,0 +1,83 @@
+* {
+  font-variant: small-caps;
+}
+p {
+  color: #eeeeee;
+  font-size: 2vw;
+  flex-grow: 1;
+}
+
+.header-1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.header-2 {
+  /*  align-self: flex-end; */
+}
+.xkcd_logo {
+  width: 80%;
+}
+
+h1 {
+  font-size: 30px;
+  color: white;
+  margin: 0;
+}
+h2 {
+  color: #00adb5;
+  font-size: 14px;
+}
+hr {
+  width: 20%;
+}
+a {
+  color: #00adb5;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 20px;
+}
+.imgc {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+  flex: 1;
+  max-width: 50%;
+}
+.content {
+  margin: 0 auto;
+  font-family: "Roboto,Helvetica,sans-serif";
+  line-height: 1.5;
+  background: #222831;
+  border-collapse: collapse;
+}
+.header {
+  display: flex;
+  flex-direction: row-reverse;
+  background: #393e46;
+  color: blue;
+  padding: 5px;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 20px;
+}
+.footer {
+  background: #263238;
+  padding: 10px;
+  font-size: 10px;
+  text-align: center;
+}
+
+.description {
+  display: flex;
+  text-align: center;
+  flex: 1;
+  align-items: center;
+}
+
+.news-section {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 30px;
+}
